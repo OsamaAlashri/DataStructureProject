@@ -48,6 +48,9 @@ private:
     int averageBusyTime;
     double averageUtilization;
 
+    //Station list
+    //vector<Station> stationList;
+
 public:
     Company();
     void loadInitialData(const string& filename);
