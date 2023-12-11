@@ -5,14 +5,16 @@
 class Time {
     int hour;
     int minute;
+    int second; 
 
 public:
     Time();
-    void setTime(int h, int m);
+    void setTime(int h, int m, int s); 
     void printTime();
     void tick();
 
     //getters
     int getHour()  const;
     int getMinute() const;
+    int getSecond() const; 
 };
