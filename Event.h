@@ -15,12 +15,12 @@ public:
 
     virtual void Execute() = 0;
 
-
+    
 };
 
 class ArrivalEvent : public Event {
 public:
-    ArrivalEvent(const string& passengerType, const string& eventTime, int id, const string& startStation, const string& endStation, const string& extraInfo);
+    ArrivalEvent(const string& passengerType, const string& eventTime, int id, const string& startStation, const string& endStation,const string& extraInfo);
 
     void Execute() override;
 

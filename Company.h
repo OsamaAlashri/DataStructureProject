@@ -5,6 +5,7 @@
 #include <fstream>
 #include <vector>
 #include "Event.h"
+#include "EventQueue.h"
 
 using namespace std;
 
@@ -13,7 +14,8 @@ class Bus {};
 class Company {
 private:
     vector<Event*> eventsList;
-    vector<Bus> busesList;
+    //vector<Bus> busesList;
+    EventQueue eventQueue;
 
     //INPUT
     int numStations;
@@ -49,7 +51,6 @@ private:
 public:
     Company();
     void loadInitialData(const string& filename);
-    void executeMinuteTasks();
     void produceOutputFile(const string& outputFilename);
 };
 
