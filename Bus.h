@@ -19,7 +19,7 @@ public:
 	Station* station = nullptr;
 	// check purpose for the above lines
 
-	Bus(const std::string& type, int& cap, int& j, int& checkup);
+	Bus(const std::string& type, int& cap, int& j, const Time& checkup);
 
 	//setters
 	void setBusType(const std::string& type);
@@ -31,6 +31,6 @@ public:
 	std::string getBusType() const;
 	int getCapacity() const;
 	int getJourneys() const;
-	int getCheckupTime() const;
+	Time getCheckupTime() const;
 	bool needsCheckup() const;
 };
