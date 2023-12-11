@@ -5,14 +5,32 @@
 #include "Time.h"
 class Bus
 {
+	std::string busType;
+	int capacity;
+	int journeys;
+	int checkupTime;
+
 public:
+
 	List<Passengers> passengers;
-	int numberOfTrips=0;
+	int numberOfTrips = 0; 
 	Time busyTime;
 	Time utilizationTime;
 	Station* station = nullptr;
-	Bus();
+	// check purpose for the above lines
 
+	Bus(const std::string& type, int& cap, int& j, int& checkup);
 
+	//setters
+	void setBusType(const std::string& type);
+	void setCapacity(int cap);
+	void setJourneys(int j);
+	void setCheckupTime(int checkup);
+
+	//getters
+	std::string getBusType() const;
+	int getCapacity() const;
+	int getJourneys() const;
+	int getCheckupTime() const;
+	bool needsCheckup() const;
 };
-
