@@ -11,15 +11,19 @@ class Passengers {
 
 public:
     Passengers(const std::string& t, int& s, int& e, Time& arrival, Time& get_on_off);
+
+    //setters
     void setArrivalTime(Time t);
     void setGetOnOff(Time t);
     void setStartStation(int s);
     void setEndStation(int e);
     void setType(std::string t);
-    Time getArrivalTime();
-    Time getGetOnOff();
-    int getStartStation();
-    int getEndStation();
-    std::string getType();
-    int PassengerPriorty();
+
+    //getters
+    Time getArrivalTime() const;
+    Time getGetOnOff() const;
+    int getStartStation() const;
+    int getEndStation() const;
+    std::string getType() const;
+    int PassengerPriorty() const;
 };
