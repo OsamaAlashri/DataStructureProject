@@ -8,7 +8,7 @@ class Bus
 	std::string busType;
 	int capacity;
 	int journeys;
-	int checkupTime;
+	Time checkupTime;
 
 public:
 
@@ -19,13 +19,13 @@ public:
 	Station* station = nullptr;
 	// check purpose for the above lines
 
-	Bus(const std::string& type, int& cap, int& j, const Time& checkup);
+	Bus(const std::string& type, int& cap, int& j,const Time& checkup);
 
 	//setters
 	void setBusType(const std::string& type);
 	void setCapacity(int cap);
 	void setJourneys(int j);
-	void setCheckupTime(int checkup);
+	void setCheckupTime(Time checkup);
 
 	//getters
 	std::string getBusType() const;
