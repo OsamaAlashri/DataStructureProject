@@ -1,29 +1,36 @@
 #pragma once
 #include "Time.h"
-#include <string>
+
+enum class PassengerType
+{
+    NP = 1,
+    Pregenant,
+    POD,
+    Aged,
+    WP
+};
 
 class Passengers {
     Time arrivalTime;
     Time getON_OFF;
     int startStation;
     int endStation;
-    std::string type;
+    PassengerType type;
 
 public:
-    Passengers(const std::string& t, int& s, int& e, Time& arrival, Time& get_on_off);
+    Passengers(const PassengerType& type, int start, int end, Time& arrival, Time& get_on_off);
 
     //setters
-    void setArrivalTime(Time t);
-    void setGetOnOff(Time t);
-    void setStartStation(int s);
-    void setEndStation(int e);
-    void setType(std::string t);
+    void setArrivalTime(Time time);
+    void setGetOnOff(Time time);
+    void setStartStation(int start);
+    void setEndStation(int end);
+    void setType(PassengerType type);
 
     //getters
-    Time getArrivalTime() const;
-    Time getGetOnOff() const;
-    int getStartStation() const;
-    int getEndStation() const;
-    std::string getType() const;
-    int PassengerPriorty() const;
+    Time getArrivalTime() const ;
+    Time getGetOnOff() const ;
+    int getStartStation() const ;
+    int getEndStation() const ;
+    PassengerType getType() const ;
 };
