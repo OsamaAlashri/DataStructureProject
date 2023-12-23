@@ -16,9 +16,10 @@ class Passengers {
     int startStation;
     int endStation;
     PassengerType type;
+    int ID;
 
 public:
-    Passengers(const PassengerType& type, int start, int end, Time& arrival, Time& get_on_off);
+    Passengers(const PassengerType& type, int start, int end, Time& arrival, Time& get_on_off , int ID);
 
     //setters
     void setArrivalTime(Time time);
@@ -26,6 +27,7 @@ public:
     void setStartStation(int start);
     void setEndStation(int end);
     void setType(PassengerType type);
+    void setID(int ID);
 
     //getters
     Time getArrivalTime() const ;
@@ -33,4 +35,5 @@ public:
     int getStartStation() const ;
     int getEndStation() const ;
     PassengerType getType() const ;
+    int getID() const ;
 };
