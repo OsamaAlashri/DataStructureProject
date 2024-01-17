@@ -78,7 +78,7 @@ void MBus::GoBackward() {
     }
 }
 
-void MBus::Remove_A_Pasenger(Passengers passenger) const
+void MBus::Remove_A_Pasenger(int passengerID) const
 {
 }
 
@@ -94,6 +94,6 @@ void WBus::GoBackward() {
     }
 }
 
-void WBus::Remove_A_Pasenger(Passengers passenger) const
+void WBus::Remove_A_Pasenger(int passengerID) const
 {
 }

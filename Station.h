@@ -26,6 +26,7 @@ public:
     Passengers* removeForwardSP();
     Passengers* removeBackwardNP();
     Passengers* removeForwardNP();
+
     //New Phase2
     void IncreaseWaitingTimeNP(int time);
 

@@ -6,6 +6,9 @@ template<typename T>
 class Priority
 {
 private:
+
+    int size = 0;
+
     Node<T>* front;
 
 public:
@@ -32,9 +35,20 @@ public:
             newNode->setNext(current->getNext());
             current->setNext(newNode);
         }
+
+        size ++ ;
     }
 
-    bool Empty() { return (size == 0); }
+    bool isEmpty() 
+    { 
+        if (size == 0)
+        {
+            return true;
+        }
+        else
+            return false;
+        
+    }
 
     int Size() { return size; }
 

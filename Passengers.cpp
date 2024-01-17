@@ -1,7 +1,7 @@
 #include "Passengers.h"
 
 Passengers::Passengers(const PassengerType& t, int s, int e, Time& arrival, Time& get_on_off, int Idenfication, int WT, int MW)
-    : type(t), startStation(s), endStation(e), arrivalTime(arrival), getON_OFF(get_on_off), ID(Idenfication), waitingTime(WT), MaxW(MW)) {}
+    : type(t), startStation(s), endStation(e), arrivalTime(arrival), getON_OFF(get_on_off), ID(Idenfication), waitingTime(WT), MaxW(MW) {}
 
 void Passengers::setArrivalTime(Time t) { arrivalTime = t; }
 void Passengers::setGetOnOff(Time t) { getON_OFF = t; }
@@ -19,7 +19,7 @@ int Passengers::getStartStation() const { return startStation; }
 int Passengers::getEndStation() const { return endStation; }
 PassengerType Passengers::getType() const { return type; }
 int Passengers::getID() const { return ID; }
-
+string Passengers::getPassengerType() const { return Type; }
 //New Phase2
 int Passengers::getWaitingTime() const { return waitingTime; }
 int Passengers::getMaxW() const { return MaxW; }

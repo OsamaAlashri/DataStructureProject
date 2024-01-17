@@ -24,7 +24,7 @@ public:
     LinkedNode<T>* getHead() const;
     void setHead(LinkedNode<T>* newHead);
 
-    void removeHead();
+    void removeHead() const;
 
     int size();
 

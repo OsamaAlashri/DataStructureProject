@@ -1,12 +1,10 @@
 #pragma once
-#include "List.h"
 #include "Passengers.h"
 #include "Station.h"
 #include "Time.h"
 class Bus
 {
     int limit;
-    int currentStation = 0;
 protected:
     std::string busType;
     int capacity;
@@ -17,7 +15,7 @@ protected:
 
 public:
 
-    List<Passengers> passengers;
+    LinkedList<Passengers> passengers;
     int numberOfTrips = 0; 
     Time busyTime;
     Time utilizationTime;

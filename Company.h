@@ -1,6 +1,3 @@
-#ifndef COMPANY_H
-#define COMPANY_H
-
 
 #include <iostream>
 #include <fstream>
@@ -69,14 +66,6 @@ private:
 	int averageTripTime;
 	int timenow;
 
-		Station* stations;
-		Queue<Event*> events;
-		Queue<Passengers*> completedPassengers;
-		Queue<Bus*> checkupWheelBuses;
-		Queue<Bus*> checkupMixedBuses;
-		Queue<Bus*> movingBuses;
-		Queue<Bus*> stationZero;
-		Queue<Bus*> movingbuses;
 public:
 
 	Company();
@@ -95,5 +84,3 @@ public:
 	void RemovePassenger(Bus* bus, Passengers* passengers);
 
 };
-
-#endif

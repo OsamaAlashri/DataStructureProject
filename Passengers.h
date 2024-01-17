@@ -20,6 +20,7 @@ class Passengers {
     int ID;
     int MaxW;
     int waitingTime;
+    string Type;
 public:
     Passengers(const PassengerType& type, int start, int end, Time& arrival, Time& get_on_off, int ID, int WT, int MW);
 
@@ -42,6 +43,8 @@ public:
     int getEndStation() const;
     PassengerType getType() const;
     int getID() const;
+
+    string getPassengerType() const;
 
     //New Phase2
     int getWaitingTime() const;

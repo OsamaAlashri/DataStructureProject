@@ -55,7 +55,7 @@ int LinkedList<T>::size() {
 }
 
 template <typename T>
-void LinkedList<T>::removeHead() {
+void LinkedList<T>::removeHead() const {
 
     if (head == nullptr) {
         return nullptr;
@@ -69,12 +69,8 @@ void LinkedList<T>::removeHead() {
         delete nodeToRemove;
     }
 
-    template <typename T>
-    bool LinkedList<T>::isEmpty() const {
+    bool LinkedList<T>::isEmpty() const 
+    {
         return head == nullptr;
     }
-
-
-
-
 }

@@ -55,8 +55,8 @@ void Company::generateOutputFile()
 		spCount = 0,
 		wpCount = 0;
 	int totalWaitingTime = 0;
-	while (!completedPassengers.isEmpty()) {
-		Passengers* passenger = completedPassengers.dequeue();
+	while (!finishedPassengers.isEmpty()) {
+		Passengers* passenger = finishedPassengers.dequeue();
 
 		file << passenger->getID() << "\t\t\t";
 		file << passenger->getArrivalTime().geTime();
@@ -64,7 +64,7 @@ void Company::generateOutputFile()
 
 		totalWaitingTime += passenger->getGetOnOff().geTime();
 
-		string type = passenger->getType();
+		string type = passenger->getPassengerType();
 
 		if (type == "NP")
 			npCount++;
@@ -145,7 +145,7 @@ void Company::releasebus()
 
 	Bus* bus = stationZero.dequeue();
 	bus->setMovingTime(time);
-	movingbuses.enqueue(bus); // add to moving buses list 
+	movingBuses.enqueue(bus); // add to moving buses list 
 	
 }
 
@@ -154,7 +154,7 @@ void Company::releaseFromCheckup(Queue<Bus*>& checkupBuses, Time checkupTime, Ti
 	while (!checkupBuses.isEmpty()) 
 	{
 		Bus* bus = checkupBuses.dequeue();
-		movingbuses.enqueue(bus);
+		movingBuses.enqueue(bus);
 	}
 }
 

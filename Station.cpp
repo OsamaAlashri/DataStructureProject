@@ -44,10 +44,10 @@ void Station::addPassenger(Passengers* passenger) {
     case PassengerType::POD:
     case PassengerType::Pregenant:
         if (passenger->getEndStation() > this->stationNumber) {
-            waitingForwardSP.add(passenger);
+            waitingForwardSP.enqueue(passenger,1);
         }
         else {
-            waitingBackwardSP.add(passenger);
+            waitingBackwardSP.enqueue(passenger,1);
         }
         break;
     case PassengerType::WP:
@@ -73,26 +73,26 @@ void Station::removePassenger(Passengers* passenger) {
         break;
     case PassengerType::Aged:
         if (!waitingForwardSP.isEmpty()) {
-            return waitingForwardSP.removeFirst();
+            return waitingForwardSP.dequeue();
         }
         else if (!waitingBackwardSP.isEmpty()) {
-            return waitingBackwardSP.removeFirst();
+            return waitingBackwardSP.dequeue();
         }
         break;
     case PassengerType::POD:
         if (!waitingForwardSP.isEmpty()) {
-            return waitingForwardSP.removeFirst();
+            return waitingForwardSP.dequeue();
         }
         else if (!waitingBackwardSP.isEmpty()) {
-            return waitingBackwardSP.removeFirst();
+            return waitingBackwardSP.dequeue();
         }
         break;
     case PassengerType::Pregenant:
         if (!waitingForwardSP.isEmpty()) {
-            return waitingForwardSP.removeFirst();
+            return waitingForwardSP.dequeue();
         }
         else if (!waitingBackwardSP.isEmpty()) {
-            return waitingBackwardSP.removeFirst();
+            return waitingBackwardSP.dequeue();
         }
         break;
     case PassengerType::WP:
