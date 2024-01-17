@@ -78,6 +78,10 @@ void MBus::GoBackward() {
     }
 }
 
+void MBus::Remove_A_Pasenger(Passengers passenger) const
+{
+}
+
 void WBus::GoForward() {
     if (station != nullptr && !station->WaitingPassengers()) {
         currentStation++;
@@ -88,4 +92,8 @@ void WBus::GoBackward() {
     if (station != nullptr && !station->WaitingPassengers()) {
         currentStation--;
     }
+}
+
+void WBus::Remove_A_Pasenger(Passengers passenger) const
+{
 }

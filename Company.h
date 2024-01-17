@@ -87,13 +87,12 @@ public:
 	void generateOutputFile();
 	void startSimulation();
 
-
 	void OPENFILE(const string& filename);
 	void releasebus();
 	void releaseFromCheckup(Queue<Bus*>& checkupBuses, Time checkupTime, Time timenow);
 	void addBusesToStations(Time timestep);
     void addToCheckup(Bus* bus, Time timenow);
-
+	void RemovePassenger(Bus* bus, Passengers* passengers);
 
 };
 

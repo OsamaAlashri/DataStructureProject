@@ -148,6 +148,7 @@
     <ClCompile Include="Passengers.cpp" />
     <ClCompile Include="Queue.cpp" />
     <ClCompile Include="Station.cpp" />
+    <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

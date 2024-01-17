@@ -13,6 +13,7 @@ protected:
     int journeys;
     int count;
     Time checkupTime;
+    Time MovingTime;
 
 public:
 
@@ -30,6 +31,7 @@ public:
     void setCapacity(int cap);
     void setJourneys(int j);
     void setCheckupTime(Time checkup);
+    void setMovingTime(Time MovingTime);
     void setCurrentStation(int St);
 
     //getters
@@ -37,9 +39,15 @@ public:
     int getCapacity() const;
     int getJourneys() const;
     Time getCheckupTime() const;
+    Time getMovingTime() const;
+
+    void GoForward();
+    void GoBackward();
+
     bool needsCheckup() const;
     int getCurrentStation() const;
 
+    void Remove_A_Pasenger(int passengerID) const;
 
 };
 
@@ -53,6 +61,7 @@ public:
     void offboardPassenger(Passengers* Passenger);
     void GoForward();
     void GoBackward();
+    void Remove_A_Pasenger(int passengerID) const;
 };
 
 
@@ -66,4 +75,5 @@ public:
     void offboardPassenger(Passengers* Passenger);
     void GoForward();
     void GoBackward();
+    void Remove_A_Pasenger(int passengerID) const;
 };

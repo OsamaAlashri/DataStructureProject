@@ -8,6 +8,9 @@ void Time::setTime(int h, int m, int s) {
     if (s >= 0 && s < 60) second = s; 
 }
 
+
+
+
 void Time::printTime() {
     std::cout << std::setfill('0') << std::setw(2) << hour << ":"
         << std::setfill('0') << std::setw(2) << minute << std::endl; 
@@ -30,4 +33,9 @@ void Time::tick() {
 
 int Time::getHour() const { return hour; }
 int Time::getMinute() const { return minute; }
-int Time::getSecond() const { return second; } 
+int Time::getSecond() const { return second; }
+int Time::geTime() const
+{
+    return hour+minute+second;
+}
+

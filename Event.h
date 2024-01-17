@@ -10,9 +10,9 @@ class Event
 {
 
 public:
-    int eventTime;
+    Time time;
     int id;
-    Event(int eventTime, int id);
+    Event(Time time, int id);
 
     virtual void execute() = 0;
 
@@ -27,7 +27,7 @@ class ArrivalEvent : public Event
     int priority;
 
 public:
-    ArrivalEvent(int eventTime, int id, string passenegerType, int startStation, int endStation, int priority = -1);
+    ArrivalEvent(Time time, int id, string passenegerType, int startStation, int endStation, int priority = -1);
 
     void execute() override;
 };
@@ -35,7 +35,7 @@ public:
 class LeaveEvent : public Event
 {
 public:
-    LeaveEvent(int eventTime, int id);
+    LeaveEvent(Time time, int id);
 
     void execute() override;
 };

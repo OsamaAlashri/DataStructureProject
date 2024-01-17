@@ -29,9 +29,9 @@ Event* Company::createArrivalEvent(ifstream& file)
 		else
 			priority = 0;
 	}
-	int timestep = hour * 60 + minute;
+	time.setTime(hour,minute,0);
 
-	return new ArrivalEvent(timestep, id, passengerType, startStation, endStation, priority);
+	return new ArrivalEvent(time, id, passengerType, startStation, endStation, priority);
 }
 
 Event* Company::createLeaveEvent(ifstream& file)
@@ -40,9 +40,8 @@ Event* Company::createLeaveEvent(ifstream& file)
 	char colon;
 
 	file >> hour >> colon >> minute >> id;
-	int timestep = hour * 60 + minute;
 
-	return new LeaveEvent(timestep, id);
+	return new LeaveEvent(time, id);
 
 }
 
@@ -60,12 +59,13 @@ void Company::generateOutputFile()
 		Passengers* passenger = completedPassengers.dequeue();
 
 		file << passenger->getID() << "\t\t\t";
-		file << passenger->getArrivalTime();
+		file << passenger->getArrivalTime().geTime();
 	
 
-		totalWaitingTime += passenger->getGetOnOff();
+		totalWaitingTime += passenger->getGetOnOff().geTime();
 
 		string type = passenger->getType();
+
 		if (type == "NP")
 			npCount++;
 		else if (type == "SP")
@@ -122,10 +122,10 @@ void Company::OPENFILE(const string& filename)
 
 
 		if (eventType == 'A') {
-			newEvent = new ArrivalEvent(eventTime, id ,passenegerType, startStation, endStation, priority);
+			newEvent = new ArrivalEvent(time, id ,passenegerType, startStation, endStation, priority);
 		}
 		else if (eventType == 'L') {
-			newEvent = new LeaveEvent (eventTime, id);
+			newEvent = new LeaveEvent (time, id);
 		}
 		else {
 			cerr << "Unknown event type: " << eventType << endl;
@@ -151,44 +151,10 @@ void Company::releasebus()
 
 void Company::releaseFromCheckup(Queue<Bus*>& checkupBuses, Time checkupTime, Time timenow)
 {
-	while (!checkupBuses.isEmpty()) {
+	while (!checkupBuses.isEmpty()) 
+	{
 		Bus* bus = checkupBuses.dequeue();
-		bus->setCheckup(false);
-		bus->setForward(true);
-
 		movingbuses.enqueue(bus);
-	}
-}
-
-void Company::addBusesToStations(Time timestep)
-{
-	while (!movingBuses.isEmpty() && timenow - (movingBuses.front()->getMovingTime()) == timeBetweenStations) {
-		Bus* bus = movingBuses.dequeue();
-		int currentStation = bus->getCurrentStation();
-		if (bus->getForward())
-		{
-			nextStation = 1;
-		}
-
-		else
-		{
-			nextStation = -1;
-		}
-
-
-
-		nextStation = nextStation + currentStation; //
-			bus->setCurrentStation(nextStation); 
-	
-		if (nextStation >= numberOfStations - 1 || nextStation == 0) { // add the bus if firts or last station last if biger than last station or equall to it
-			stations[nextStation].addBus(bus); //
-		}
-		else {   // if bus havent reached last or firs station update its moving time
-			bus->setMovingTime(timenow);
-			movingBuses.enqueue(bus);
-		}
-
-
 	}
 }
 
@@ -203,12 +169,12 @@ void Company::addToCheckup(Bus* bus, Time timenow)
 	}
 }
 
-void DequeuePassenger(Bus* bus, Passengers* pass) {
-	int DesiredStation = pass->getEndStation();
+void Company::RemovePassenger(Bus* bus, Passengers* passengers) {
+	int DesiredStation = passengers->getEndStation();
 
-	if (bus->() == DesiredStation) 
+	if (bus->getCurrentStation() == DesiredStation) 
 	{
-		bus->();
+	bus->Remove_A_Pasenger(passengers->getID());
 	}
 }
 

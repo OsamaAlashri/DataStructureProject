@@ -16,5 +16,6 @@ public:
     //getters
     int getHour()  const;
     int getMinute() const;
-    int getSecond() const; 
+    int getSecond() const;
+    int geTime() const;
 };
