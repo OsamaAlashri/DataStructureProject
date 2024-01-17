@@ -128,19 +128,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Bus.h" />
+    <ClInclude Include="Company.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Passengers.h" />
+    <ClInclude Include="PraiorityQueue.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Station.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bus.cpp" />
+    <ClCompile Include="Company.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="List.cpp" />
+    <ClCompile Include="Passengers.cpp" />
     <ClCompile Include="Queue.cpp" />
     <ClCompile Include="Station.cpp" />
   </ItemGroup>

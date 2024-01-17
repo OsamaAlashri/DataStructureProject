@@ -1,60 +1,100 @@
 #ifndef COMPANY_H
 #define COMPANY_H
 
+
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include "Event.h"
 #include "EventQueue.h"
+#include "LinkedList.h"
+#include "Queue.h"
+#include "Passengers.h"
+#include "Station.h"
+#include "Bus.h"
 
 using namespace std;
 
-class Bus {};
 
 class Company {
 private:
-    vector<Event*> eventsList;
-    //vector<Bus> busesList;
-    EventQueue eventQueue;
 
-    //INPUT
-    int numStations;
-    int timeBetweenStations;
-    int totalWBusCount;
-    int totalMBusCount;
-    int wBusCapacity;
-    int mBusCapacity;
-    int tripsBeforeCheckup;
-    int checkupDurationWBus;
-    int checkupDurationMBus;
-    int maxWaitingTime;
-    int getOnOffTime;
+	Time time;
 
-    //OUTPUT
-    vector<string> outputLines; 
-    int totalPassengers;
-    int numNormalPassengers;
-    int numSpecialPassengers;
-    int numWaitingPassengers;
-    int totalBuses;
-    int numWBus;
-    int numMBus;
+	Station* stations;
+	Queue<Event*> events;
+	Queue<Passengers*> finishedPassengers;
+	Queue<Bus*> checkupWheelBuses;
+	Queue<Bus*> checkupMixedBuses;
+	Queue<Bus*> movingBuses;
+	Queue<Bus*> stationZero;
+	vector <Bus*> movingbuses;
 
-    int averageWaitingTime;
-    int averageTripTime;
+	Passengers* passenger = nullptr;
 
-    double percentageAutoPromoted;
+	string passengerType;
+	string type;
 
-    int averageBusyTime;
-    double averageUtilization;
+	int maxWaitingTime;
+	int promotedPassengers;
+	int numberOfStations;
+	int journiesBeforeCheckup, wBusCheckupPeriod, mBusCheckupPeriod;
+	int gettingTime;
+	int journeysBeforeCheckup;
+	int boardingTime;
+	int timestep;
 
-    //Station list
-    //vector<Station> stationList;
+	char eventType;
 
+	int nextStation;
+
+	int numStations;
+	int timeBetweenStations;
+	int totalWBusCount;
+	int totalMBusCount;
+	int wBusCapacity;
+	int mBusCapacity;
+	int tripsBeforeCheckup;
+	int checkupDurationWBus;
+	int checkupDurationMBus;
+	int getOnOffTime;
+	int totalPassengers;
+	int numNormalPassengers;
+	int numSpecialPassengers;
+	int numWaitingPassengers;
+	int totalBuses;
+	int numWBus;
+	int numMBus;
+	int averageWaitingTime;
+	int averageTripTime;
+	int timenow;
+
+		Station* stations;
+		Queue<Event*> events;
+		Queue<Passengers*> completedPassengers;
+		Queue<Bus*> checkupWheelBuses;
+		Queue<Bus*> checkupMixedBuses;
+		Queue<Bus*> movingBuses;
+		Queue<Bus*> stationZero;
+		Queue<Bus*> movingbuses;
 public:
-    Company();
-    void loadInitialData(const string& filename);
-    void produceOutputFile(const string& outputFilename);
+
+	Company();
+
+	
+	Event* createArrivalEvent(ifstream& file);
+	Event* createLeaveEvent(ifstream& file);
+	void generateOutputFile();
+	void startSimulation();
+
+
+	void OPENFILE(const string& filename);
+	void releasebus();
+	void releaseFromCheckup(Queue<Bus*>& checkupBuses, Time checkupTime, Time timenow);
+	void addBusesToStations(Time timestep);
+    void addToCheckup(Bus* bus, Time timenow);
+
+
 };
 
 #endif

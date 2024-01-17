@@ -1,35 +1,36 @@
 #pragma once
-#include "List.h"
-#include "Bus.h"
-#include "Passengers.h"
+#include "LinkedList.h"
 #include "Queue.h"
+#include "PriorityQueue.h"
+#include "Passengers.h"
 
-class Station {
-private:
-    int stationNumber;
-    List<Passengers> waitingPassengers;
-    List<Bus> availableBuses;
-	int maxStations;
+class Station
+{
+    LinkedList<Passengers*> waitingForwardNP;
+    LinkedList<Passengers*> waitingBackwardNP;
+    Queue<Passengers*> waitingForwardWP;
+    Queue<Passengers*> waitingBackwardWP;
+    Priority<Passengers*> waitingForwardSP;
+    Priority<Passengers*> waitingBackwardSP;
 
 public:
-    Station(int stationNum);
+    bool WaitingPassengers();
 
-    void addBus(const Bus& bus);
-    void removeBus(const Bus& bus);
-    List<Bus> getAvailableBuses() const;
+    int stationNumber;
 
-    void addPassenger(const Passengers& passenger);
-    void removePassenger(const Passengers& passenger);
-    List<Passengers> getWaitingPassengers() const;
 
-    void unloadLoadPassengers();
 
-	List<Passengers> Np; //normal person cal leave the queue after MaxW time (list is needed not queue)
-	Queue<Passengers> Aged;
-	Queue<Passengers> POD;
-	Queue<Passengers> PW;
-	Queue<Passengers> Wp;
-	bool CheckTime();
+    Passengers* removeBackwardWP();
+    Passengers* removeForwardWP();
+    Passengers* removeBackwardSP();
+    Passengers* removeForwardSP();
+    Passengers* removeBackwardNP();
+    Passengers* removeForwardNP();
+    //New Phase2
+    void IncreaseWaitingTimeNP(int time);
+
+    void addPassenger(Passengers* passenger);
+
+    void removePassenger(Passengers* passenger);
 
 };
-

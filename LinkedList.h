@@ -23,4 +23,10 @@ public:
 
     LinkedNode<T>* getHead() const;
     void setHead(LinkedNode<T>* newHead);
+
+    void removeHead();
+
+    int size();
+
+    bool isEmpty() const;
 };

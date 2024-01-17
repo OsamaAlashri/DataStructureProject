@@ -14,5 +14,11 @@ public:
     bool isEmpty() const;
 
     void display();
+
+    T front() { return Head->getItem(); }
+
+    Iterator begin() const {
+        return Iterator(Head);
+    }
 };
 

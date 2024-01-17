@@ -1,36 +1,41 @@
 #pragma once
+
+#include "Station.h"
+#include "LinkedList.h"
 #include <string>
+
 using namespace std;
 
-class Event {
+class Event
+{
+
 public:
+    int eventTime;
     int id;
-    string eventType;
-    string passengerType;
-    string eventTime;
-    string startStation;
-    string endStation;
+    Event(int eventTime, int id);
 
-    Event(const string& eventType, const string& passengerType, const string& eventTime, int id, const string& startStation, const string& endStation);
+    virtual void execute() = 0;
 
-    virtual void Execute() = 0;
-
-    
+    int geteventTime();
 };
 
-class ArrivalEvent : public Event {
+class ArrivalEvent : public Event
+{
+    string passenegerType;
+    int startStation;
+    int endStation;
+    int priority;
+
 public:
-    ArrivalEvent(const string& passengerType, const string& eventTime, int id, const string& startStation, const string& endStation,const string& extraInfo);
+    ArrivalEvent(int eventTime, int id, string passenegerType, int startStation, int endStation, int priority = -1);
 
-    void Execute() override;
-
-private:
-    string extraInfo;
+    void execute() override;
 };
 
-class LeaveEvent : public Event {
+class LeaveEvent : public Event
+{
 public:
-    LeaveEvent(const string& eventTime, const string& startStation);
+    LeaveEvent(int eventTime, int id);
 
-    void Execute() override;
+    void execute() override;
 };

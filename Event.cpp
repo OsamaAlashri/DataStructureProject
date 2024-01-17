@@ -1,23 +1,26 @@
 #include "Event.h"
-#include <iostream>
-using namespace std;
+#include<iostream>
 
-// Event 
-Event::Event(const string& eventType, const string& passengerType, const string& eventTime, int id, const string& startStation, const string& endStation)
-    : eventType(eventType), passengerType(passengerType), eventTime(eventTime), id(id), startStation(startStation), endStation(endStation) {}
 
-// ArrivalEvent 
-ArrivalEvent::ArrivalEvent(const string& passengerType, const string& eventTime, int id, const string& startStation, const string& endStation, const string& extraInfo)
-    : Event("A", passengerType, eventTime, id, startStation, endStation), extraInfo(extraInfo) {}
+//Parent Class
+Event::Event(int eventTime, int id) : eventTime(eventTime), id(id) {}
 
-void ArrivalEvent::Execute() {
-    cout << "Executing Arrival Event\n";
+int Event::geteventTime()
+{
+    return eventTime;
 }
 
-// LeaveEvent 
-LeaveEvent::LeaveEvent(const string& eventTime, const string& startStation)
-    : Event("L", "", eventTime, 0, startStation, "") {}
+//Arival Event
+ArrivalEvent::ArrivalEvent(int eventTime, int id, string passenegerType, int startStation, int endStation, int priority)
+    : Event(eventTime, id), passenegerType(passenegerType), startStation(startStation), endStation(endStation), priority(priority) {}
 
-void LeaveEvent::Execute() {
-    cout << "Executing Leave Event\n";
+void ArrivalEvent::execute() {
+    std::cout << "Executing Arrival Event\n";
+}
+
+//Leave Event
+LeaveEvent::LeaveEvent(int eventTime, int id) : Event(eventTime, id) {}
+
+void LeaveEvent::execute() {
+    std::cout << "Executing Leave Event\n";
 }
