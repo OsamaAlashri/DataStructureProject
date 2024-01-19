@@ -50,7 +50,7 @@ Event* Company::createLeaveEvent(ifstream& file)
 void Company::generateOutputFile()
 {
 	ofstream file("output.txt");
-	file << "FT\t\t\tID\t\t\tAT\t\t\tWT\t\t\tTT\n";
+	file << "ID\t\t\tFT\t\t\tAT\t\t\tWT\t\t\tTT\n";
 	int npCount = 0,
 		spCount = 0,
 		wpCount = 0;

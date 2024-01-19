@@ -69,7 +69,7 @@ void LinkedList<T>::removeHead() const {
         delete nodeToRemove;
     }
 
-    bool LinkedList<T>::isEmpty() const 
+    bool LinkedList<T>::isEmpty() const
     {
         return head == nullptr;
     }
